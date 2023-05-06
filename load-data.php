@@ -2,30 +2,37 @@
 
 require "config.php";
 
-use App\Student;
+use App\Pet;
 
 try {
-	Student::register('Richard', 'Feynman', 'richard@feynman.com');
-	echo "<li>Added 1 student";
+	Pet::register('Pao', 'Male', '2022-05-02', 'Pee', 'ilypao@gmail.com', 'My Address 1043', '090123455');
+	echo "<li>Added 1 pet";
 
-	$students = [
+	$pets = [
 		[
-			'first_name' => 'Albert',
-			'last_name' => 'Einstein',
-			'email' => 'albert@einstein.com'
+			'pet_name' => 'Chow',
+			'pet_gender' => 'Male',
+			'birthdate' => '2022-05-02',
+			'owner_name' => 'King',
+			'email' => 'ilychow@gmail.com',
+			'address' => 'My Address 1043',
+			'contact_number' => '090123455'
 		],
 		[
-			'first_name' => 'Paul',
-			'last_name' => 'Erdos',
-			'email' => 'paul@erdos.com'
+			'pet_name' => 'Jolly',
+			'pet_gender' => 'Male',
+			'birthdate' => '2022-05-02',
+			'owner_name' => 'Bee',
+			'email' => 'ilyjolly@gmail.com',
+			'address' => 'My Address 1043',
+			'contact_number' => '090123455'
 		]
 	];
-	Student::registerMany($students);
-	echo "<li>Added " . count($students) . " more students";
+	Pet::registerMany($pets);
+	echo "<li>Added " . count($pets) . " more pets";
 	echo "<br /><a href='index.php'>Proceed to Index Page</a>";
 
 } catch (PDOException $e) {
 	error_log($e->getMessage());
 	echo "<h1 style='color: red'>" . $e->getMessage() . "</h1>";
 }
-

@@ -1,5 +1,5 @@
 {
-    "name": "itsromack/ccs06-load-update-delete",
+    "name": "kristine/ccs06-load-update-delete",
     "require": {
         "vlucas/phpdotenv": "^5.5"
     },
@@ -10,8 +10,8 @@
     },
     "authors": [
         {
-            "name": "Romack Natividad",
-            "email": "natividad.romack@auf.edu.ph"
+            "name": "Kristine",
+            "email": "kristinebasilio28@gmail.com"
         }
     ]
 }
