@@ -6,10 +6,10 @@ try {
 	$sql_users = "
 		CREATE TABLE IF NOT EXISTS pets (
 			id INT AUTO_INCREMENT PRIMARY KEY,
-			pet_name VARCHAR(30) NOT NULL,
-			pet_gender CHAR(6) NOT NULL,
+			name VARCHAR(30) NOT NULL,
+			gender CHAR(6) NOT NULL,
 			birthdate DATE NOT NULL,
-			owner_name VARCHAR(70) NOT NULL,
+			owner VARCHAR(70) NOT NULL,
 			email VARCHAR(100) NOT NULL,
 			address VARCHAR(255) NOT NULL,
 			contact_number VARCHAR(20) NOT NULL,

@@ -10,19 +10,19 @@ try {
 
 	$pets = [
 		[
-			'pet_name' => 'Chow',
-			'pet_gender' => 'Male',
+			'name' => 'Chow',
+			'gender' => 'Male',
 			'birthdate' => '2022-05-02',
-			'owner_name' => 'King',
+			'owner' => 'King',
 			'email' => 'ilychow@gmail.com',
 			'address' => 'My Address 1043',
 			'contact_number' => '090123455'
 		],
 		[
-			'pet_name' => 'Jolly',
-			'pet_gender' => 'Male',
+			'name' => 'Jolly',
+			'gender' => 'Male',
 			'birthdate' => '2022-05-02',
-			'owner_name' => 'Bee',
+			'owner' => 'Bee',
 			'email' => 'ilyjolly@gmail.com',
 			'address' => 'My Address 1043',
 			'contact_number' => '090123455'

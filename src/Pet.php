@@ -7,10 +7,10 @@ use PDO;
 class Pet
 {
 	protected $id;
-	protected $pet_name;
-	protected $pet_gender;
+	protected $name;
+	protected $gender;
 	protected $birthdate;
-	protected $owner_name;
+	protected $owner;
 	protected $email;
 	protected $address;
 	protected $contact_number;
@@ -23,12 +23,12 @@ class Pet
 
 	public function getPetName()
 	{
-		return $this->pet_name;
+		return $this->name;
 	}
 
 	public function getPetGender()
 	{
-		return $this->pet_gender;
+		return $this->gender;
 	}
 
 	public function getBirthdate()
@@ -38,7 +38,7 @@ class Pet
 
 	public function getOwnerName()
 	{
-		return $this->owner_name;
+		return $this->owner;
 	}
 	public function getEmail()
 	{
@@ -48,7 +48,6 @@ class Pet
 	{
 		return $this->address;
 	}
-
 	public function getContactNumber()
 	{
 		return $this->contact_number;
@@ -97,14 +96,14 @@ class Pet
 		return null;
 	}
 
-	public static function register($pet_name, $pet_gender, $birthdate, $owner_name, $email, $address, $contact_number)
+	public static function register($name, $gender, $birthdate, $owner, $email, $address, $contact_number)
 	{
 		global $conn;
 
 		try {
 			$sql = "
-				INSERT INTO pets (pet_name, pet_gender, birthdate, owner_name, email, address, contact_number)
-				VALUES ('$pet_name', '$pet_gender', '$birthdate', '$owner_name', '$email', '$address', '$contact_number')
+				INSERT INTO pets (name, gender, birthdate, owner, email, address, contact_number)
+				VALUES ('$name', '$gender', '$birthdate', '$owner', '$email', '$address', '$contact_number')
 			";
 			$conn->exec($sql);
 
@@ -125,10 +124,10 @@ class Pet
 				$sql = "
 					INSERT INTO pets
 					SET
-						pet_name=\"{$user['pet_name']}\",
-						pet_gender=\"{$user['pet_gender']}\",
+						name=\"{$user['name']}\",
+						gender=\"{$user['gender']}\",
 						birthdate=\"{$user['birthdate']}\",
-						owner_name=\"{$user['owner_name']}\",
+						owner=\"{$user['owner']}\",
 						email=\"{$user['email']}\",
 						address=\"{$user['address']}\",
 						contact_number=\"{$user['contact_number']}\"
@@ -144,7 +143,7 @@ class Pet
 		return false;
 	}
 
-	public static function update($id, $pet_name, $pet_gender, $birthdate, $owner_name, $email, $address, $contact_number)
+	public static function update($id, $name, $gender, $birthdate, $owner, $email, $address, $contact_number)
 	{
 		global $conn;
 
@@ -152,10 +151,10 @@ class Pet
 			$sql = "
 				UPDATE pets
 				SET
-					pet_name=?,
-					pet_gender=?,
+					name=?,
+					gender=?,
 					birthdate=?,
-					owner_name=?,
+					owner=?,
 					email=?,
 					address=?,
 					contact_number=?
@@ -163,10 +162,10 @@ class Pet
 			";
 			$statement = $conn->prepare($sql);
 			return $statement->execute([
-				$pet_name,
-				$pet_gender,
+				$name,
+				$gender,
 				$birthdate,
-				$owner_name,
+				$owner,
 				$email,
 				$address,
 				$contact_number,
@@ -179,7 +178,7 @@ class Pet
 		return false;
 	}
 
-	public static function updateUsingPlaceholder($id, $pet_name, $pet_gender, $birthdate, $owner_name, $email, $address, $contact_number)
+	public static function updateUsingPlaceholder($id, $name, $gender, $birthdate, $owner, $email, $address, $contact_number)
 	{
 		global $conn;
 
@@ -187,21 +186,21 @@ class Pet
 			$sql = "
 				UPDATE pets
 				SET
-					pet_name=:pet_name,
-					last_name=:pet_gender,
-					email=:birthdate
-					pet_name=:owner_name,
-					last_name=:email,
-					email=:address
-					pet_name=:contact_number,
+					name=:name,
+					gender=:gender,
+					birthdate=:birthdate
+					owner=:owner,
+					email=:email,
+					address=:address
+					contact_number=:contact_number,
 				WHERE id=:id
 			";
 			$statement = $conn->prepare($sql);
 			return $statement->execute([
-				'pet_name' => $pet_name,
-				'pet_gender' => $pet_gender,
+				'name' => $name,
+				'gender' => $gender,
 				'birthdate' => $birthdate,
-				'owner_name' => $owner_name,
+				'owner' => $owner,
 				'email' => $email,
 				'address' => $address,
 				'contact_number' => $contact_number,

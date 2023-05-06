@@ -8,15 +8,15 @@ use App\Pet;
 
 try {
 	$id = $_POST['id'];
-	$pet_name = $_POST['pet_name'];
-	$pet_gender = $_POST['pet_gender'];
+	$name = $_POST['name'];
+	$gender = $_POST['gender'];
 	$birthdate = $_POST['birthdate'];
-	$owner_name = $_POST['owner_name'];
+	$owner = $_POST['owner'];
 	$email = $_POST['email'];
 	$address = $_POST['address'];
 	$contact_number = $_POST['contact_number'];
 	
-	$result = Pet::update($id, $pet_name, $pet_gender, $birthdate, $owner_name, $email, $address, $contact_number);
+	$result = Pet::update($id, $name, $gender, $birthdate, $owner, $email, $address, $contact_number);
 
 	if ($result) {
 		header('Location: index.php');
